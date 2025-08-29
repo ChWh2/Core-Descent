@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://dl8dpqb8uqk77"]
+
+[ext_resource type="Script" uid="uid://dbuugq7oujbk6" path="res://Scripts/ship.gd" id="1_78pfh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxrlw"]
+size = Vector2(200, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4lamp"]
+size = Vector2(10, 260)
+
+[node name="Ship" type="StaticBody2D"]
+script = ExtResource("1_78pfh")
+
+[node name="Floor" type="CollisionShape2D" parent="."]
+position = Vector2(0, 50)
+shape = SubResource("RectangleShape2D_qxrlw")
+
+[node name="Roof" type="CollisionShape2D" parent="."]
+position = Vector2(0, -200)
+shape = SubResource("RectangleShape2D_qxrlw")
+
+[node name="LeftWall" type="CollisionShape2D" parent="."]
+position = Vector2(-95, -75)
+shape = SubResource("RectangleShape2D_4lamp")
+
+[node name="RightWall" type="CollisionShape2D" parent="."]
+position = Vector2(95, -75)
+shape = SubResource("RectangleShape2D_4lamp")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+z_index = -1
+color = Color(0.197805, 0.808557, 1, 1)
+polygon = PackedVector2Array(100, -205, 100, 55, -100, 55, -100, -205)

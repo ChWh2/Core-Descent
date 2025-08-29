@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ewf5opcv1exd"]
+
+[ext_resource type="Script" uid="uid://bb48uosmir3cq" path="res://Scripts/player.gd" id="1_v0iea"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sh265"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_v0iea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sh265")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(10, 10, 10, -10, -10, -10, -10, 10)
+
+[node name="Camera2D" type="Camera2D" parent="."]
