@@ -1,33 +1,198 @@
-[gd_scene load_steps=4 format=3 uid="uid://dl8dpqb8uqk77"]
+[gd_scene load_steps=24 format=3 uid="uid://dl8dpqb8uqk77"]
 
+[ext_resource type="Texture2D" uid="uid://ce8waycynn822" path="res://Assets/Ship.png" id="1_4qyt1"]
 [ext_resource type="Script" uid="uid://dbuugq7oujbk6" path="res://Scripts/ship.gd" id="1_78pfh"]
+[ext_resource type="Script" uid="uid://cn0lappxmiqsr" path="res://Scripts/ShipPart.gd" id="3_xxxu3"]
+[ext_resource type="Texture2D" uid="uid://bhvxe5rladtcy" path="res://Assets/alarm.png" id="4_6ejuo"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxrlw"]
-size = Vector2(200, 10)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4qyt1"]
+size = Vector2(128, 3)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4lamp"]
-size = Vector2(10, 260)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xxxu3"]
+size = Vector2(3, 125)
 
-[node name="Ship" type="StaticBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ejuo"]
+size = Vector2(52, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8aq7e"]
+size = Vector2(38, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cmder"]
+size = Vector2(35, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fwcnm"]
+size = Vector2(55, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxdp2"]
+size = Vector2(71, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v2j2m"]
+size = Vector2(19, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1m05r"]
+size = Vector2(29, 29)
+
+[sub_resource type="Gradient" id="Gradient_xxxu3"]
+offsets = PackedFloat32Array(0, 0.707792)
+colors = PackedColorArray(0.445125, 0.151399, 0, 1, 0.336073, 0.106394, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6ejuo"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8aq7e"]
+color_ramp = SubResource("Gradient_xxxu3")
+noise = SubResource("FastNoiseLite_6ejuo")
+
+[sub_resource type="Gradient" id="Gradient_6ejuo"]
+offsets = PackedFloat32Array(0, 0.707792)
+colors = PackedColorArray(0.330367, 0.104039, 1.20327e-07, 1, 0.256009, 0.073352, 8.42288e-08, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8aq7e"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cmder"]
+width = 120
+height = 128
+color_ramp = SubResource("Gradient_6ejuo")
+noise = SubResource("FastNoiseLite_8aq7e")
+
+[sub_resource type="Gradient" id="Gradient_8aq7e"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cmder"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fwcnm"]
+width = 16
+height = 16
+color_ramp = SubResource("Gradient_8aq7e")
+noise = SubResource("FastNoiseLite_cmder")
+
+[sub_resource type="Gradient" id="Gradient_kxdp2"]
+offsets = PackedFloat32Array(0.28, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
+
+[node name="Ship" type="Sprite2D"]
+z_index = -1
+texture = ExtResource("1_4qyt1")
 script = ExtResource("1_78pfh")
 
-[node name="Floor" type="CollisionShape2D" parent="."]
-position = Vector2(0, 50)
-shape = SubResource("RectangleShape2D_qxrlw")
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="Roof" type="CollisionShape2D" parent="."]
-position = Vector2(0, -200)
-shape = SubResource("RectangleShape2D_qxrlw")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 43.5)
+shape = SubResource("RectangleShape2D_4qyt1")
 
-[node name="LeftWall" type="CollisionShape2D" parent="."]
-position = Vector2(-95, -75)
-shape = SubResource("RectangleShape2D_4lamp")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-62.5, -20.5)
+shape = SubResource("RectangleShape2D_xxxu3")
 
-[node name="RightWall" type="CollisionShape2D" parent="."]
-position = Vector2(95, -75)
-shape = SubResource("RectangleShape2D_4lamp")
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -84.5)
+shape = SubResource("RectangleShape2D_4qyt1")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(62.5, -20)
+shape = SubResource("RectangleShape2D_xxxu3")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-35, 11.5)
+shape = SubResource("RectangleShape2D_6ejuo")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(42, 11.5)
+shape = SubResource("RectangleShape2D_8aq7e")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-43.5, -20.5)
+shape = SubResource("RectangleShape2D_cmder")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(33.5, -20.5)
+shape = SubResource("RectangleShape2D_fwcnm")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(25.5, -52.5)
+shape = SubResource("RectangleShape2D_kxdp2")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-51.5, -52.5)
+shape = SubResource("RectangleShape2D_v2j2m")
+
+[node name="Navigation" type="Area2D" parent="." node_paths=PackedStringArray("alarm")]
+script = ExtResource("3_xxxu3")
+interactTime = 5.0
+alarm = NodePath("Alarm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Navigation"]
+position = Vector2(46.5, 27.5)
+shape = SubResource("RectangleShape2D_1m05r")
+
+[node name="Alarm" type="Sprite2D" parent="Navigation"]
+visible = false
+position = Vector2(52, 19)
+texture = ExtResource("4_6ejuo")
+
+[node name="Oxygen" type="Area2D" parent="." node_paths=PackedStringArray("alarm")]
+script = ExtResource("3_xxxu3")
+interactTime = 5.0
+alarm = NodePath("Alarm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Oxygen"]
+position = Vector2(-46.5, -4.5)
+shape = SubResource("RectangleShape2D_1m05r")
+
+[node name="Alarm" type="Sprite2D" parent="Oxygen"]
+visible = false
+position = Vector2(-36.5, 5.5)
+texture = ExtResource("4_6ejuo")
+
+[node name="Electric" type="Area2D" parent="."]
+script = ExtResource("3_xxxu3")
+interactTime = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Electric"]
+position = Vector2(46.5, -36.5)
+shape = SubResource("RectangleShape2D_1m05r")
+
+[node name="Engine" type="Area2D" parent="." node_paths=PackedStringArray("alarm")]
+script = ExtResource("3_xxxu3")
+interactTime = 5.0
+alarm = NodePath("Alarm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Engine"]
+position = Vector2(39.5, -68.5)
+shape = SubResource("RectangleShape2D_1m05r")
+
+[node name="Alarm" type="Sprite2D" parent="Engine"]
+visible = false
+position = Vector2(30.5, -76.5)
+texture = ExtResource("4_6ejuo")
+
+[node name="Background" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
+motion_mirroring = Vector2(512, 512)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxLayer"]
+texture = SubResource("NoiseTexture2D_8aq7e")
+
+[node name="DirtTrail" type="CPUParticles2D" parent="."]
 z_index = -1
-color = Color(0.197805, 0.808557, 1, 1)
-polygon = PackedVector2Array(100, -205, 100, 55, -100, 55, -100, -205)
+position = Vector2(0, -128)
+texture = SubResource("NoiseTexture2D_cmder")
+particle_flag_align_y = true
+gravity = Vector2(0, 0)
+
+[node name="Fire" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(0, -128)
+rotation = -1.57079
+amount = 128
+texture = SubResource("NoiseTexture2D_fwcnm")
+emission_shape = 3
+emission_rect_extents = Vector2(64.96, 1)
+particle_flag_align_y = true
+spread = 23.6
+gravity = Vector2(0, 0)
+initial_velocity_min = 121.21
+initial_velocity_max = 121.21
+color_ramp = SubResource("Gradient_kxdp2")

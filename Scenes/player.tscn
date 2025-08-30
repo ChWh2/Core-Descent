@@ -1,16 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://ewf5opcv1exd"]
+[gd_scene load_steps=4 format=3 uid="uid://ewf5opcv1exd"]
 
 [ext_resource type="Script" uid="uid://bb48uosmir3cq" path="res://Scripts/player.gd" id="1_v0iea"]
+[ext_resource type="Texture2D" uid="uid://ctv58alve0efj" path="res://Assets/player.png" id="2_cvnsp"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sh265"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_v0iea"]
+radius = 8.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_v0iea")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_sh265")
-
-[node name="Polygon2D" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(10, 10, 10, -10, -10, -10, -10, 10)
+shape = SubResource("CircleShape2D_v0iea")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_cvnsp")

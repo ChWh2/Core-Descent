@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlwem2rf632wj"]
+
+[ext_resource type="Script" uid="uid://cf64nh4ll2lcm" path="res://Scripts/interactible_ui.gd" id="1_lqon1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wqqbd"]
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[node name="InteractibleUI" type="Control"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_lqon1")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -47.5
+offset_top = -11.5
+offset_right = 47.5
+offset_bottom = 11.5
+text = "E to Fix"
+label_settings = SubResource("LabelSettings_wqqbd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = -68.5
+offset_top = 15.5
+offset_right = 68.5
+offset_bottom = 42.5
+value = 50.0
+show_percentage = false
