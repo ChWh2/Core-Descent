@@ -15,6 +15,11 @@ run/main_scene="uid://f267vc3hgvrg"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
+SilentwolfManager="*res://Scripts/silentwolf_manager.gd"
+
 [display]
 
 window/stretch/mode="viewport"

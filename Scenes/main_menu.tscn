@@ -1,6 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://f267vc3hgvrg"]
+[gd_scene load_steps=10 format=3 uid="uid://f267vc3hgvrg"]
 
 [ext_resource type="Script" uid="uid://blpj2dsk46c1p" path="res://Scripts/SceneSwitch.gd" id="1_28flt"]
+[ext_resource type="Texture2D" uid="uid://ce8waycynn822" path="res://Assets/Ship.png" id="2_48xlc"]
+[ext_resource type="Script" uid="uid://csmljndi4e843" path="res://Scripts/leaderboard.gd" id="3_1ehe0"]
+[ext_resource type="PackedScene" uid="uid://ol588j1v2ygr" path="res://Scenes/leaderboard_item.tscn" id="4_ce3w2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_28flt"]
+font_size = 64
+
+[sub_resource type="Gradient" id="Gradient_28flt"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.25974, 0.532468, 0.792208)
+colors = PackedColorArray(0.485792, 0.168182, 9.62615e-08, 1, 0.445125, 0.151399, 0, 1, 0.336073, 0.106394, 0, 1, 0.261761, 0.075726, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_48xlc"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1ehe0"]
+width = 1152
+height = 648
+seamless = true
+color_ramp = SubResource("Gradient_28flt")
+noise = SubResource("FastNoiseLite_48xlc")
+
+[sub_resource type="LabelSettings" id="LabelSettings_48xlc"]
+font_size = 124
+outline_size = 32
+outline_color = Color(0, 0, 0, 1)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -9,13 +34,75 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-text = "Start"
+offset_left = 484.0
+offset_top = 262.0
+offset_right = 530.0
+offset_bottom = 293.0
+scale = Vector2(4, 4)
 script = ExtResource("1_28flt")
 path = "res://Scenes/game.tscn"
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 138.0
+offset_bottom = 93.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+text = "Start"
+label_settings = SubResource("LabelSettings_28flt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Background" type="TextureRect" parent="."]
+z_index = -100
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = SubResource("NoiseTexture2D_1ehe0")
+
+[node name="Ship" type="Sprite2D" parent="."]
+position = Vector2(878, 335)
+rotation = 0.523599
+scale = Vector2(2, 2)
+texture = ExtResource("2_48xlc")
+
+[node name="DirtTrail" type="Line2D" parent="Ship"]
+z_index = -3
+texture_repeat = 2
+points = PackedVector2Array(0, -86, 0, -519)
+width = 125.0
+default_color = Color(0, 0, 0, 0.541176)
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 833.0
+offset_bottom = 197.0
+text = "Core Descent"
+label_settings = SubResource("LabelSettings_48xlc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 212.0
+offset_right = 421.0
+offset_bottom = 632.0
+mouse_filter = 2
+script = ExtResource("3_1ehe0")
+leaderboardItem = ExtResource("4_ce3w2")
 
 [connection signal="pressed" from="Button" to="Button" method="switch"]

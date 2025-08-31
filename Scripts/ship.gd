@@ -84,8 +84,6 @@ func timeout():
 	for i in partsToBreak:
 		i.working = false
 	
-	print(str("broke ", partsToBreak))
-	
 	timer.wait_time = float(partsToBreak.size()) * ((startingShipDamage - endingShipDamage) * pow(baseShipDamage, float(brokenShipParts)) + endingShipDamage)
 	timer.start()
 	

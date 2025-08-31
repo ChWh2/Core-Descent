@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dl8dpqb8uqk77"]
+[gd_scene load_steps=22 format=3 uid="uid://dl8dpqb8uqk77"]
 
 [ext_resource type="Texture2D" uid="uid://ce8waycynn822" path="res://Assets/Ship.png" id="1_4qyt1"]
 [ext_resource type="Script" uid="uid://dbuugq7oujbk6" path="res://Scripts/ship.gd" id="1_78pfh"]
@@ -50,8 +50,9 @@ offsets = PackedFloat32Array(0.28, 1)
 colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
 
 [sub_resource type="Gradient" id="Gradient_xxxu3"]
-offsets = PackedFloat32Array(0, 0.707792)
-colors = PackedColorArray(0.445125, 0.151399, 0, 1, 0.336073, 0.106394, 0, 1)
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.25974, 0.532468, 0.792208)
+colors = PackedColorArray(0.485792, 0.168182, 9.62615e-08, 1, 0.445125, 0.151399, 0, 1, 0.336073, 0.106394, 0, 1, 0.261761, 0.075726, 0, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_6ejuo"]
 
@@ -59,19 +60,6 @@ colors = PackedColorArray(0.445125, 0.151399, 0, 1, 0.336073, 0.106394, 0, 1)
 seamless = true
 color_ramp = SubResource("Gradient_xxxu3")
 noise = SubResource("FastNoiseLite_6ejuo")
-
-[sub_resource type="Gradient" id="Gradient_cmder"]
-offsets = PackedFloat32Array(0, 0.56338)
-colors = PackedColorArray(0.336073, 0.106394, 0, 1, 0.209463, 0.0541429, 6.01634e-09, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_fwcnm"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kxdp2"]
-width = 125
-height = 125
-seamless = true
-color_ramp = SubResource("Gradient_cmder")
-noise = SubResource("FastNoiseLite_fwcnm")
 
 [node name="Ship" type="Sprite2D"]
 z_index = -1
@@ -195,11 +183,11 @@ script = ExtResource("5_8aq7e")
 repeatSize = Vector2(512, 512)
 
 [node name="DirtTrail" type="Line2D" parent="."]
-z_index = -2
+z_index = -3
 texture_repeat = 2
 points = PackedVector2Array(0, -86, 0, -519)
 width = 125.0
-texture = SubResource("NoiseTexture2D_kxdp2")
+default_color = Color(0, 0, 0, 0.541176)
 texture_mode = 1
 joint_mode = 2
 begin_cap_mode = 2
