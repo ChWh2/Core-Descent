@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://trlqkli4p1rf"]
+
+[ext_resource type="Script" uid="uid://blpj2dsk46c1p" path="res://Scripts/SceneSwitch.gd" id="1_rwas2"]
+
+[node name="DeathScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Back to Menu"
+script = ExtResource("1_rwas2")
+
+[connection signal="pressed" from="Button" to="Button" method="switch"]

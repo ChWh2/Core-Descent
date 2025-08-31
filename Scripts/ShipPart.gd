@@ -3,7 +3,7 @@ class_name ShipPart
 
 var working := true:
 	set(value):
-		toggled.emit()
+		toggled.emit(value)
 		working = value
 
 @export var interactTime := 10.0
