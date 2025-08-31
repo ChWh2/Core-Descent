@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://dl8dpqb8uqk77"]
+[gd_scene load_steps=25 format=3 uid="uid://dl8dpqb8uqk77"]
 
 [ext_resource type="Texture2D" uid="uid://ce8waycynn822" path="res://Assets/Ship.png" id="1_4qyt1"]
 [ext_resource type="Script" uid="uid://dbuugq7oujbk6" path="res://Scripts/ship.gd" id="1_78pfh"]
 [ext_resource type="Script" uid="uid://cn0lappxmiqsr" path="res://Scripts/ShipPart.gd" id="3_xxxu3"]
 [ext_resource type="Texture2D" uid="uid://bhvxe5rladtcy" path="res://Assets/alarm.png" id="4_6ejuo"]
+[ext_resource type="Script" uid="uid://cjytbxf8f07hp" path="res://Scripts/background.gd" id="5_8aq7e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4qyt1"]
 size = Vector2(128, 3)
@@ -32,28 +33,6 @@ size = Vector2(19, 3)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1m05r"]
 size = Vector2(29, 29)
 
-[sub_resource type="Gradient" id="Gradient_xxxu3"]
-offsets = PackedFloat32Array(0, 0.707792)
-colors = PackedColorArray(0.445125, 0.151399, 0, 1, 0.336073, 0.106394, 0, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_6ejuo"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8aq7e"]
-color_ramp = SubResource("Gradient_xxxu3")
-noise = SubResource("FastNoiseLite_6ejuo")
-
-[sub_resource type="Gradient" id="Gradient_6ejuo"]
-offsets = PackedFloat32Array(0, 0.707792)
-colors = PackedColorArray(0.330367, 0.104039, 1.20327e-07, 1, 0.256009, 0.073352, 8.42288e-08, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_8aq7e"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cmder"]
-width = 120
-height = 128
-color_ramp = SubResource("Gradient_6ejuo")
-noise = SubResource("FastNoiseLite_8aq7e")
-
 [sub_resource type="Gradient" id="Gradient_8aq7e"]
 offsets = PackedFloat32Array(1)
 colors = PackedColorArray(1, 1, 1, 1)
@@ -69,6 +48,30 @@ noise = SubResource("FastNoiseLite_cmder")
 [sub_resource type="Gradient" id="Gradient_kxdp2"]
 offsets = PackedFloat32Array(0.28, 1)
 colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_xxxu3"]
+offsets = PackedFloat32Array(0, 0.707792)
+colors = PackedColorArray(0.445125, 0.151399, 0, 1, 0.336073, 0.106394, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6ejuo"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8aq7e"]
+seamless = true
+color_ramp = SubResource("Gradient_xxxu3")
+noise = SubResource("FastNoiseLite_6ejuo")
+
+[sub_resource type="Gradient" id="Gradient_cmder"]
+offsets = PackedFloat32Array(0, 0.56338)
+colors = PackedColorArray(0.336073, 0.106394, 0, 1, 0.209463, 0.0541429, 6.01634e-09, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fwcnm"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kxdp2"]
+width = 125
+height = 125
+seamless = true
+color_ramp = SubResource("Gradient_cmder")
+noise = SubResource("FastNoiseLite_fwcnm")
 
 [node name="Ship" type="Sprite2D"]
 z_index = -1
@@ -167,21 +170,6 @@ visible = false
 position = Vector2(30.5, -76.5)
 texture = ExtResource("4_6ejuo")
 
-[node name="Background" type="ParallaxBackground" parent="."]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
-motion_mirroring = Vector2(512, 512)
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxLayer"]
-texture = SubResource("NoiseTexture2D_8aq7e")
-
-[node name="DirtTrail" type="CPUParticles2D" parent="."]
-z_index = -1
-position = Vector2(0, -128)
-texture = SubResource("NoiseTexture2D_cmder")
-particle_flag_align_y = true
-gravity = Vector2(0, 0)
-
 [node name="Fire" type="CPUParticles2D" parent="."]
 z_index = -1
 position = Vector2(0, -128)
@@ -196,3 +184,23 @@ gravity = Vector2(0, 0)
 initial_velocity_min = 121.21
 initial_velocity_max = 121.21
 color_ramp = SubResource("Gradient_kxdp2")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -3
+texture_repeat = 2
+texture = SubResource("NoiseTexture2D_8aq7e")
+region_enabled = true
+region_rect = Rect2(0, 0, 2048, 2048)
+script = ExtResource("5_8aq7e")
+repeatSize = Vector2(512, 512)
+
+[node name="DirtTrail" type="Line2D" parent="."]
+z_index = -2
+texture_repeat = 2
+points = PackedVector2Array(0, -86, 0, -519)
+width = 125.0
+texture = SubResource("NoiseTexture2D_kxdp2")
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2

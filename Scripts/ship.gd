@@ -22,7 +22,7 @@ signal toggleOxygen
 @onready var engine: ShipPart = $Engine
 var shipPartArray : Array[ShipPart]
 
-@onready var background: ParallaxBackground = $Background
+@onready var background: Sprite2D = $Background
 
 func _ready() -> void:
 	shipPartArray.append(navigation)
@@ -47,7 +47,6 @@ func _process(delta: float) -> void:
 		
 		rotate(swivel)
 		rotation = wrap(rotation, -PI, PI)
-		print(rotation)
 	else:
 		var newRotation : float = move_toward(rotation, 0.0, swivelSpeed * delta * 0.05)
 		swivelDirection = 0
@@ -65,7 +64,8 @@ func _process(delta: float) -> void:
 	
 	ShipPart.hasElectricity = electric.working
 	
-	background.offset -= speed * Vector2(-sin(rotation), cos(rotation)) * delta
+	background.position.y -= speed * delta
+	background.rotation = -rotation
 
 func timeout():
 	var randMax := 1.0
