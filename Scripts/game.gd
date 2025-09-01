@@ -2,7 +2,7 @@ extends Node2D
 class_name GameManager
 
 const maxOxygen := 30.0
-var oxygen := -1.0#maxOxygen
+var oxygen := maxOxygen
 var oxygenDrain := false
 
 @onready var player: Player = $Player
