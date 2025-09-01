@@ -73,6 +73,7 @@ offset_right = 462.0
 offset_bottom = 293.0
 scale = Vector2(4, 4)
 script = SubResource("GDScript_rc6v1")
+path = "res://Scenes/intro.tscn"
 
 [node name="Label" type="Label" parent="Button"]
 layout_mode = 1
