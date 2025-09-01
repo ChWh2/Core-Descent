@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Core Descent"
-run/main_scene="uid://f267vc3hgvrg"
+run/main_scene="uid://cm30jrhftk0eh"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
