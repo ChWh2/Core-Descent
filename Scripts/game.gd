@@ -2,7 +2,7 @@ extends Node2D
 class_name GameManager
 
 const maxOxygen := 30.0
-var oxygen := -1.0#maxOxygen
+var oxygen := maxOxygen
 var oxygenDrain := false
 
 @onready var player: Player = $Player
@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 	
 	$Player/UI/Oxygen.max_value = maxOxygen
 	$Player/UI/Oxygen.value = oxygen
-	$Player/UI/Distance.text = str("Distance: ", floor(distance / 100.0) /10.0, "km")
+	$Player/UI/Distance.text = str("Depth: ", floor(distance / 100.0) /10.0, "km")
 
 func toggleOxygen(value : bool):
 	oxygenDrain = not value

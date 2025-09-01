@@ -64,7 +64,11 @@ func _process(delta: float) -> void:
 	
 	ShipPart.hasElectricity = electric.working
 	
-	background.position.y -= speed * delta
+	#background.position.y -= speed * delta
+	
+	var backgroundRect = Rect2(background.region_rect)
+	backgroundRect.position += speed * delta * Vector2.from_angle(rotation + PI / 2.0)
+	background.region_rect = backgroundRect
 	background.rotation = -rotation
 
 func timeout():

@@ -1,10 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://dl8dpqb8uqk77"]
+[gd_scene load_steps=21 format=3 uid="uid://dl8dpqb8uqk77"]
 
 [ext_resource type="Texture2D" uid="uid://ce8waycynn822" path="res://Assets/Ship.png" id="1_4qyt1"]
 [ext_resource type="Script" uid="uid://dbuugq7oujbk6" path="res://Scripts/ship.gd" id="1_78pfh"]
 [ext_resource type="Script" uid="uid://cn0lappxmiqsr" path="res://Scripts/ShipPart.gd" id="3_xxxu3"]
 [ext_resource type="Texture2D" uid="uid://bhvxe5rladtcy" path="res://Assets/alarm.png" id="4_6ejuo"]
-[ext_resource type="Script" uid="uid://cjytbxf8f07hp" path="res://Scripts/background.gd" id="5_8aq7e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4qyt1"]
 size = Vector2(128, 3)
@@ -118,8 +117,7 @@ position = Vector2(46.5, 27.5)
 shape = SubResource("RectangleShape2D_1m05r")
 
 [node name="Alarm" type="Sprite2D" parent="Navigation"]
-visible = false
-position = Vector2(52, 19)
+position = Vector2(54.5, 27.5)
 texture = ExtResource("4_6ejuo")
 
 [node name="Oxygen" type="Area2D" parent="." node_paths=PackedStringArray("alarm")]
@@ -160,7 +158,7 @@ texture = ExtResource("4_6ejuo")
 
 [node name="Fire" type="CPUParticles2D" parent="."]
 z_index = -1
-position = Vector2(0, -128)
+position = Vector2(0, -151)
 rotation = -1.57079
 amount = 128
 texture = SubResource("NoiseTexture2D_fwcnm")
@@ -179,8 +177,6 @@ texture_repeat = 2
 texture = SubResource("NoiseTexture2D_8aq7e")
 region_enabled = true
 region_rect = Rect2(0, 0, 2048, 2048)
-script = ExtResource("5_8aq7e")
-repeatSize = Vector2(512, 512)
 
 [node name="DirtTrail" type="Line2D" parent="."]
 z_index = -3

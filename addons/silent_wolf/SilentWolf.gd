@@ -141,7 +141,7 @@ func send_get_request(http_node: HTTPRequest, request_url: String):
 		"x-sw-godot-version: " + godot_version 
 	]
 	headers = add_jwt_token_headers(headers)
-	print("GET headers: " + str(headers))
+	#print("GET headers: " + str(headers)) #Hidden because of API key
 	while !http_node.is_inside_tree():
 		await get_tree().create_timer(0.01).timeout
 	SWLogger.debug("Method: GET")
@@ -159,7 +159,7 @@ func send_post_request(http_node, request_url, payload):
 		"x-sw-godot-version: " + godot_version 
 	]
 	headers = add_jwt_token_headers(headers)
-	print("POST headers: " + str(headers))
+	#print("POST headers: " + str(headers)) #Hidden because of API key
 	# TODO: This should in fact be the case for all POST requests, make the following code more generic
 	#var post_request_paths: Array[String] = ["post_new_score", "push_player_data"]
 	var paths_with_values_to_hash: Dictionary = {

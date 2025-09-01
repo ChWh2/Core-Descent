@@ -10,7 +10,7 @@ func _ready() -> void:
 	SilentWolf.configure({
 		"api_key": key,
 		"game_id": "coredescent",
-		"log_level": 1
+		"log_level": -1
 	})
 
 func updateScores():
